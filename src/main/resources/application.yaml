@@ -1,0 +1,46 @@
+
+debug: false
+management.endpoints.web.exposure.include: "*"
+logging:
+  level:
+    com.fastcampus.projectboard: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
+spring:
+  datasource:
+    url: ${JAWSDB_URL}
+#    url : jdbc:mysql://localhost:3306/board
+    username: ${JAWSDB_USERNAME}
+#    username:  smh
+    password: ${JAWSDB_PASSWROD}
+#    password: alsgur0700!
+    hikari:
+      maximum-pool-size: 9
+    config.activate.on-profile: heroku
+    jpa.hibernate.ddl-auto: create
+    sql.init.mode: always
+
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+    open-in-view: false
+  sql.init.mode: always
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated
+  thymeleaf3:
+    decoupled-logic: true
+  config:
+    activate:
+      on-cloud-platform: heroku
+
+server:
+  port=${port:8080}:

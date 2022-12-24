@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<thlogic>
+
+
+    <attr sel="#login-form" th:action="@{/login}" th:method="post"/>
+    <attr sel="#sign-up" th:href="@{/sign-up}"/>
+    <attr sel="#loginerror" th:if="@{param.error}" />
+    <attr sel="#loginerrortxt" th:text="${exception}" />
+
+
+
+</thlogic>
