@@ -72,7 +72,7 @@ public record BoardPrincipal(
 
     public enum RoleType {
         USER("ROLE_USER"),
-        ADMIN("ROLE_ADMIN, ROLE_USER"),
+        ADMIN("ROLE_ADMIN,ROLE_USER"),
         ANONYMOUS("ROLE_ANONYMOUS");
 
         @Getter private final String name;
