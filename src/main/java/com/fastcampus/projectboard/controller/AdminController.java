@@ -12,7 +12,7 @@ public class AdminController {
 
     @GetMapping
     public String adminPage() {
-        return "admin";
+        return "/admin";
     }
 
 }

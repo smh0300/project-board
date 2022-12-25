@@ -9,6 +9,6 @@
     <attr sel="#signup" sec:authorize="!isAuthenticated()" th:href="@{/sign-up}" />
     <attr sel="#login" sec:authorize="!isAuthenticated()" th:href="@{/login}" />
     <attr sel="#usermypage" sec:authorize="hasRole('USER')" th:href="@{/mypages/userMypage}" />
-    <attr sel="#adminmypage" sec:authorize="hasRole('ADMIN')" th:href="@{/mypages/adminMypage}" />
+    <attr sel="#adminmypage" sec:authorize="hasRole('ADMIN')" th:href="@{/admin}" />
     <attr sel="#logout" sec:authorize="isAuthenticated()" th:href="@{/logout}" />
 </thlogic>
