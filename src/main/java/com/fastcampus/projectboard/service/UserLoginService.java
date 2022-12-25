@@ -6,13 +6,13 @@ import com.fastcampus.projectboard.repository.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -43,7 +43,14 @@ public class UserLoginService implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(splitStr[i]));
         }
 
-        return new BoardPrincipal(userAccount1.getUserId(), userAccount1.getUserPassword(), authorities, userAccount1.getEmail(), userAccount1.getNickname(), userAccount1.getMemo());
+        return new BoardPrincipal(
+                userAccount1.getUserId(),
+                userAccount1.getUserPassword(),
+                authorities,
+                userAccount1.getEmail(),
+                userAccount1.getNickname(),
+                userAccount1.getMemo()
+        );
 
     }
 }

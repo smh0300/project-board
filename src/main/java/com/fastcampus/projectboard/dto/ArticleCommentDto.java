@@ -4,7 +4,6 @@ package com.fastcampus.projectboard.dto;
 import com.fastcampus.projectboard.domain.Article;
 import com.fastcampus.projectboard.domain.ArticleComment;
 import com.fastcampus.projectboard.domain.UserAccount;
-
 import java.time.LocalDateTime;
 
 public record ArticleCommentDto(

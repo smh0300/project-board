@@ -1,8 +1,6 @@
 package com.fastcampus.projectboard.dto.response;
 
 import com.fastcampus.projectboard.dto.ArticleDto;
-
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public record ArticleResponse(

@@ -2,7 +2,6 @@ package com.fastcampus.projectboard.domain;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

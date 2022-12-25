@@ -2,8 +2,6 @@ package com.fastcampus.projectboard.dto.request;
 
 import com.fastcampus.projectboard.domain.UserAccount;
 import lombok.Builder;
-import org.springframework.security.core.userdetails.User;
-
 
 @Builder
 public record UserSignUpRequest(

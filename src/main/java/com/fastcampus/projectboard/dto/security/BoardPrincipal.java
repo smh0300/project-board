@@ -1,14 +1,11 @@
 package com.fastcampus.projectboard.dto.security;
 
-import com.fastcampus.projectboard.domain.Article;
 import com.fastcampus.projectboard.dto.UserAccountDto;
-import com.fastcampus.projectboard.repository.ArticleRepository;
 import lombok.Getter;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
