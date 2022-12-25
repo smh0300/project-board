@@ -22,7 +22,6 @@ Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan fe
 
 Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.', '#purple', 'Arv', 'Keelby', '2021-05-06 11:51:24', '2021-05-23 08:34:54'),
                                                                                                              ('유저2', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.', 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', '#purple', 'Adams', 'Thalia', '2021-08-13 08:32:22', '2021-04-02 02:58:19'),
-                                                                                                             ('admin', '안녕하세요 관리자입니다.', '제 계정을 탈취해주세요. 관리자페이지는 /admin입니다.', '#purple', 'admin', 'Thalia', '2022-12-25 08:32:22', '2021-04-02 02:58:19'),
                                                                                                              ('유저1', 'Fusce posuere felis sed lacus.', 'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.', '#mauv', 'Johny', 'Constantin', '2021-09-05 04:28:16', '2021-10-31 17:46:08'),
                                                                                                              ('유저1', 'Aliquam erat volutpat.', 'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', '#green', 'Karlene', 'Marmaduke', '2022-01-25 16:10:23', '2021-11-08 08:47:03'),
                                                                                                              ('유저1', 'Donec ut mauris eget massa tempor convallis.', 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
@@ -382,7 +381,9 @@ Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luc
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '#yellow', 'Hoyt', 'Austina', '2021-06-26 18:20:38', '2021-02-20 16:09:49'),
                                                                                                              ('유저1', 'Ut tellus.', 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.
 
-Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', null, 'Wilmer', 'Ingra', '2021-07-19 14:18:17', '2022-01-23 17:29:54')
+Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', null, 'Wilmer', 'Ingra', '2021-07-19 14:18:17', '2022-01-23 17:29:54'),
+                                                                                                             ('admin', '안녕하세요 관리자입니다.', '제 계정을 탈취해주세요. 관리자페이지는 /admin입니다.', '#purple', 'admin', 'Thalia', '2022-12-25 08:32:22', '2021-04-02 02:58:19')
+
 ;
 
 -- 1000 댓글
