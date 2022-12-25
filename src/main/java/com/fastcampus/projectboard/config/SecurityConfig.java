@@ -25,8 +25,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers(
-                                "/admin",
-                                "/mypages/adminMypage"
+                                "/admin"
                         ).hasAnyAuthority("ROLE_ADMIN")
                         .requestMatchers(
                                 HttpMethod.POST,
