@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -102,7 +103,7 @@ public class ArticleController {
 
         Long articleCount = articleService.getArticleCount();
 
-        if (multipartFile == null) {
+        if (multipartFile.size() == 1 && Objects.equals(multipartFile.get(0).getOriginalFilename(), "")) {
             return "redirect:/articles";
         }
         else {
