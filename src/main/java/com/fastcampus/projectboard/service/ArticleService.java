@@ -55,10 +55,9 @@ public class ArticleService {
                 .orElseThrow(() -> new EntityNotFoundException("게시글이 없습니다 - articleId: " + articleId));
     }
 
-    public void saveArticle(ArticleDto dto) {
+    public Long saveArticle(ArticleDto dto) {
         UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
-        articleRepository.save(dto.toEntity(userAccount));
-
+        return articleRepository.save(dto.toEntity(userAccount)).getId();
     }
 
     public void updateArticle(Long articleId, ArticleDto dto) {

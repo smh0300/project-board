@@ -99,15 +99,13 @@ public class ArticleController {
             ArticleRequest articleRequest,
             @RequestParam(required = false ,name="files") List<MultipartFile> multipartFile
     ) throws IOException {
-        articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
-
-        Long articleCount = articleService.getArticleCount();
+        Long articleid = articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
 
         if (multipartFile.size() == 1 && Objects.equals(multipartFile.get(0).getOriginalFilename(), "")) {
             return "redirect:/articles";
         }
         else {
-            fileService.saveFile(boardPrincipal.toDto(),multipartFile, articleCount);
+            fileService.saveFile(boardPrincipal.toDto(),multipartFile, articleid);
             return "redirect:/articles";
         }
     }
