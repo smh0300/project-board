@@ -34,6 +34,8 @@ public class QArticle extends EntityPathBase<Article> {
     //inherited
     public final StringPath createdBy = _super.createdBy;
 
+    public final SetPath<File, QFile> files = this.<File, QFile>createSet("files", File.class, QFile.class, PathInits.DIRECT2);
+
     public final StringPath hashtag = createString("hashtag");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
