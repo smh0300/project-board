@@ -1,6 +1,5 @@
 package com.fastcampus.projectboard.domain;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,42 +12,49 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
+
 
 @Getter
 @ToString(callSuper = true)
 @Table(indexes = {
-        @Index(columnList = "content"),
-        @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy")
+        @Index(columnList = "origFilename"),
+        @Index(columnList = "uuid"),
+        @Index(columnList = "contentType")
 })
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class ArticleComment extends AuditingFields {
-
+public class File extends AuditingFields{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
     @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
-    @Setter @Column(nullable = false, length = 500) private String content; // 본문
+    @Setter @Column(nullable = false, length = 500) private String origFilename; // 실제파일이름
+    @Setter @Column(nullable = false, length = 500) private String uuid; // 저장된파일이름
+    @Setter @Column(nullable = false, length = 500) private String contentType; // 파일형식
 
-    protected ArticleComment() {}
 
-    private ArticleComment(Article article, UserAccount userAccount, String content) {
+    protected File() {}
+
+    private File(Article article, UserAccount userAccount, String origFilename, String uuid, String contentType) {
         this.article = article;
         this.userAccount = userAccount;
-        this.content = content;
+        this.origFilename = origFilename;
+        this.uuid = uuid;
+        this.contentType = contentType;
     }
 
-    public static ArticleComment of(Article article, UserAccount userAccount, String content) {
-        return new ArticleComment(article, userAccount, content);
+    public static File of(Article article, UserAccount userAccount, String origFilename, String uuid, String contentType) {
+        return new File(article, userAccount, origFilename, uuid, contentType);
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ArticleComment that)) return false;
+        if (!(o instanceof File that)) return false;
         return id != null && id.equals(that.id);
     }
 

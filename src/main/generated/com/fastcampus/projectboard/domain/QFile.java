@@ -11,22 +11,22 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QArticleComment is a Querydsl query type for ArticleComment
+ * QFile is a Querydsl query type for File
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QArticleComment extends EntityPathBase<ArticleComment> {
+public class QFile extends EntityPathBase<File> {
 
-    private static final long serialVersionUID = -1653155784L;
+    private static final long serialVersionUID = 1461285867L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QArticleComment articleComment = new QArticleComment("articleComment");
+    public static final QFile file = new QFile("file");
 
     public final QAuditingFields _super = new QAuditingFields(this);
 
     public final QArticle article;
 
-    public final StringPath content = createString("content");
+    public final StringPath contentType = createString("contentType");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
@@ -42,25 +42,29 @@ public class QArticleComment extends EntityPathBase<ArticleComment> {
     //inherited
     public final StringPath modifiedBy = _super.modifiedBy;
 
+    public final StringPath origFilename = createString("origFilename");
+
     public final QUserAccount userAccount;
 
-    public QArticleComment(String variable) {
-        this(ArticleComment.class, forVariable(variable), INITS);
+    public final StringPath uuid = createString("uuid");
+
+    public QFile(String variable) {
+        this(File.class, forVariable(variable), INITS);
     }
 
-    public QArticleComment(Path<? extends ArticleComment> path) {
+    public QFile(Path<? extends File> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QArticleComment(PathMetadata metadata) {
+    public QFile(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QArticleComment(PathMetadata metadata, PathInits inits) {
-        this(ArticleComment.class, metadata, inits);
+    public QFile(PathMetadata metadata, PathInits inits) {
+        this(File.class, metadata, inits);
     }
 
-    public QArticleComment(Class<? extends ArticleComment> type, PathMetadata metadata, PathInits inits) {
+    public QFile(Class<? extends File> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.article = inits.isInitialized("article") ? new QArticle(forProperty("article"), inits.get("article")) : null;
         this.userAccount = inits.isInitialized("userAccount") ? new QUserAccount(forProperty("userAccount")) : null;

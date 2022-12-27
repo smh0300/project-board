@@ -1,12 +1,15 @@
 package com.fastcampus.projectboard.controller;
 
+import com.fastcampus.projectboard.domain.Article;
 import com.fastcampus.projectboard.domain.constant.FormStatus;
 import com.fastcampus.projectboard.domain.constant.SearchType;
 import com.fastcampus.projectboard.dto.request.ArticleRequest;
+import com.fastcampus.projectboard.dto.request.FileRequest;
 import com.fastcampus.projectboard.dto.response.ArticleResponse;
 import com.fastcampus.projectboard.dto.response.ArticleWithCommentsResponse;
 import com.fastcampus.projectboard.dto.security.BoardPrincipal;
 import com.fastcampus.projectboard.service.ArticleService;
+import com.fastcampus.projectboard.service.FileService;
 import com.fastcampus.projectboard.service.PaginationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,8 +21,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 
 @RequiredArgsConstructor
@@ -29,6 +35,7 @@ public class ArticleController {
 
     private final ArticleService articleService;
     private final PaginationService paginationService;
+    private final FileService fileService;
 
     @GetMapping
     public String articles(
@@ -44,7 +51,7 @@ public class ArticleController {
         map.addAttribute("paginationBarNumbers", barNumbers);
         map.addAttribute("searchTypes", SearchType.values());
 
-        String auth = "■■■■■■■■■■■■■■■■■■■■■" +SecurityContextHolder.getContext().toString();
+        String auth = "■■■■■■■■■■■■■■■■■■■■■  " +SecurityContextHolder.getContext().toString();
         System.out.println(auth);
         return "articles/index";
     }
@@ -88,11 +95,20 @@ public class ArticleController {
     @PostMapping ("/form")
     public String postNewArticle(
             @AuthenticationPrincipal BoardPrincipal boardPrincipal,
-            ArticleRequest articleRequest
-    ) {
+            ArticleRequest articleRequest,
+            @RequestParam(required = false ,name="files") List<MultipartFile> multipartFile
+    ) throws IOException {
         articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
 
-        return "redirect:/articles";
+        Long articleCount = articleService.getArticleCount();
+
+        if (multipartFile == null) {
+            return "redirect:/articles";
+        }
+        else {
+            fileService.saveFile(boardPrincipal.toDto(),multipartFile, articleCount);
+            return "redirect:/articles";
+        }
     }
 
     @GetMapping("/{articleId}/form")

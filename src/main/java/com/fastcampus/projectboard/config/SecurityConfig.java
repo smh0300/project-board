@@ -52,10 +52,10 @@ public class SecurityConfig {
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/")
                         .and()
-                .exceptionHandling()
-                .accessDeniedHandler(new CustomAccessDeniedHandler())
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-                        .and()
+                //.exceptionHandling()
+                //.accessDeniedHandler(new CustomAccessDeniedHandler())
+                //.authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+                //        .and()
                 .build();
 
     }
