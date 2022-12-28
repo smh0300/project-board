@@ -11,11 +11,14 @@ import com.fastcampus.projectboard.dto.security.BoardPrincipal;
 import com.fastcampus.projectboard.service.ArticleService;
 import com.fastcampus.projectboard.service.FileService;
 import com.fastcampus.projectboard.service.PaginationService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -143,11 +146,12 @@ public class ArticleController {
     }
 
     @GetMapping("/download/{articleId}/{uuid}")
-    public void downloading(
+    public ResponseEntity<Resource> downloading(
         @PathVariable Long articleId,
         @PathVariable String uuid
     ) {
-        fileService.downloadFile(articleId, uuid);
+        return fileService.downloadFile(articleId, uuid);
+
     }
 
 }

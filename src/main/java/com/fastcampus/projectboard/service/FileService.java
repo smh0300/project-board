@@ -6,15 +6,24 @@ import com.fastcampus.projectboard.dto.UserAccountDto;
 import com.fastcampus.projectboard.repository.ArticleRepository;
 import com.fastcampus.projectboard.repository.FileRepository;
 import com.fastcampus.projectboard.repository.UserAccountRepository;
-import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,21 +57,39 @@ public class FileService {
 
             file.transferTo(new File(fileDir + "\\" + savedName));
 
-            com.fastcampus.projectboard.domain.File file1 = com.fastcampus.projectboard.domain.File.of(article,userAccount,origFilename,uuid,contentType,fileSize);
+            com.fastcampus.projectboard.domain.File file1 = com.fastcampus.projectboard.domain.File.of(article,userAccount,origFilename,uuid,contentType,fileSize,ext);
 
             fileRepository.save(file1);
 
         }
     }
 
-    public void downloadFile(Long articleId, String uuid){
+    public ResponseEntity<Resource> downloadFile(Long articleId, String uuid){
         try {
-            //fileRepository.findByArticle_idAndUuid(articleId, uuid);
-        }catch (EntityNotFoundException e){
+            com.fastcampus.projectboard.domain.File file = fileRepository.findByArticle_IdAndUuid(articleId, uuid)
+                    .orElseThrow(IllegalArgumentException::new);
+
+            //윈도 버전
+            Path filePath = Paths.get(fileDir + "\\" + file.getUuid() + file.getExt());
+
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(filePath.toString()));
+            String fileName = file.getOrigFilename();
+
+            String encodedFileName = UriUtils.encode(fileName, StandardCharsets.UTF_8);
+
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .cacheControl(CacheControl.noCache())
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + encodedFileName +"\"")
+                    .body(resource);
+
+        }catch (Exception e){
             log.warn(e.getLocalizedMessage());
+            return null;
         }
 
-        System.out.println("helloworld");
+
 
 
     }

@@ -27,9 +27,6 @@ public record FileDto (
         return new FileDto(id, articleId, userAccountDto, origFilename, uuid, contentType, fileSize,createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
-    public File toEntity(Article article, UserAccount userAccount){
-        return File.of(article, userAccount, origFilename, uuid, contentType, fileSize);
-    }
 
     public static FileDto from(File entity){
         return new FileDto(

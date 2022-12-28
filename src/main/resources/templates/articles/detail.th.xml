@@ -15,7 +15,7 @@
         <!-- 첨부파일 나열-->
         <attr sel="#comment-files" th:remove="all-but-first">
             <attr sel="li[0]" th:each="articleFiles : ${articleFiles}">
-                <attr sel="#filename" th:text="${articleFiles.origFilename}" th:href="'/download/'+${articleId}+'/'+${articleFiles.uuid}" />
+                <attr sel="#filename" th:text="${articleFiles.origFilename}" th:href="'/articles/download/'+${articleId}+'/'+${articleFiles.uuid}" />
                 <attr sel="#filesize" th:text="${articleFiles.fileSize} + ' Byte'"/>
             </attr>
         </attr>
