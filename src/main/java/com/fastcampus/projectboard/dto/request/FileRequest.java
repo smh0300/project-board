@@ -13,24 +13,14 @@ public record FileRequest (
         Long articleId,
         String origFilename,
         String uuid,
-        String contentType
+        String contentType,
+        Long fileSize
 ){
 
-    public FileRequest of(Long articleId, String origFilename, String uuid, String contentType) {
+    public FileRequest of(Long articleId, String origFilename, String uuid, String contentType, Long fileSize) {
 
-        return new FileRequest(articleId, origFilename, uuid, contentType);
+        return new FileRequest(articleId, origFilename, uuid, contentType, fileSize);
     }
-
-    public FileDto toDto(UserAccountDto userAccountDto) {
-        return FileDto.of(
-                articleId,
-                userAccountDto,
-                origFilename,
-                uuid,
-                contentType
-        );
-    }
-
 
 
 }

@@ -1,6 +1,10 @@
 package com.fastcampus.projectboard.dto.response;
 
+import com.fastcampus.projectboard.domain.File;
 import com.fastcampus.projectboard.dto.ArticleCommentDto;
+import com.fastcampus.projectboard.dto.ArticleWithCommentsDto;
+import com.fastcampus.projectboard.dto.FileDto;
+
 import java.time.LocalDateTime;
 
 public record ArticleCommentResponse(
@@ -31,4 +35,6 @@ public record ArticleCommentResponse(
                 dto.userAccountDto().userId()
         );
     }
+
+
 }

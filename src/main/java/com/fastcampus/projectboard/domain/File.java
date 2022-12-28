@@ -34,20 +34,21 @@ public class File extends AuditingFields{
     @Setter @Column(nullable = false, length = 500) private String origFilename; // 실제파일이름
     @Setter @Column(nullable = false, length = 500) private String uuid; // 저장된파일이름
     @Setter @Column(nullable = false, length = 500) private String contentType; // 파일형식
-
+    @Setter @Column(nullable = false) private Long fileSize;
 
     protected File() {}
 
-    private File(Article article, UserAccount userAccount, String origFilename, String uuid, String contentType) {
+    private File(Article article, UserAccount userAccount, String origFilename, String uuid, String contentType, Long fileSize) {
         this.article = article;
         this.userAccount = userAccount;
         this.origFilename = origFilename;
         this.uuid = uuid;
         this.contentType = contentType;
+        this.fileSize = fileSize;
     }
 
-    public static File of(Article article, UserAccount userAccount, String origFilename, String uuid, String contentType) {
-        return new File(article, userAccount, origFilename, uuid, contentType);
+    public static File of(Article article, UserAccount userAccount, String origFilename, String uuid, String contentType, Long fileSize) {
+        return new File(article, userAccount, origFilename, uuid, contentType, fileSize);
     }
 
 

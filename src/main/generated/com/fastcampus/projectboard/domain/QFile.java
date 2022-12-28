@@ -34,6 +34,8 @@ public class QFile extends EntityPathBase<File> {
     //inherited
     public final StringPath createdBy = _super.createdBy;
 
+    public final NumberPath<Long> fileSize = createNumber("fileSize", Long.class);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited

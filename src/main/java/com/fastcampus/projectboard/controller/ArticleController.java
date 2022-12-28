@@ -63,6 +63,7 @@ public class ArticleController {
 
         map.addAttribute("article", article);
         map.addAttribute("articleComments", article.articleCommentsResponse());
+        map.addAttribute("articleFiles", article.fileDtos());
         map.addAttribute("totalCount", articleService.getArticleCount());
 
         return "articles/detail";
@@ -139,6 +140,14 @@ public class ArticleController {
         articleService.deleteArticle(articleId, boardPrincipal.getUsername());
 
         return "redirect:/articles";
+    }
+
+    @GetMapping("/download/{articleId}/{uuid}")
+    public void downloading(
+        @PathVariable Long articleId,
+        @PathVariable String uuid
+    ) {
+        fileService.downloadFile(articleId, uuid);
     }
 
 }
