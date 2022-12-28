@@ -56,9 +56,9 @@ spring:
 custom:
   path:
     #클라우드용 설정
-    upload-files: /tmp
+    upload-files: /tmp/
     #로컬용 설정
-    #upload-files: C:\\Users\\smh03\\Desktop
+    #upload-files: C:\\Users\\smh03\\Desktop\\
 
 server:
   port=${port:8080}:

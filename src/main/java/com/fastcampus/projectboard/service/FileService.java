@@ -55,7 +55,7 @@ public class FileService {
             String contentType = file.getContentType();
             Long fileSize = file.getSize();
 
-            file.transferTo(new File(fileDir + "\\" + savedName));
+            file.transferTo(new File(fileDir + savedName));
 
             com.fastcampus.projectboard.domain.File file1 = com.fastcampus.projectboard.domain.File.of(article,userAccount,origFilename,uuid,contentType,fileSize,ext);
 
@@ -70,7 +70,7 @@ public class FileService {
                     .orElseThrow(IllegalArgumentException::new);
 
             //윈도 버전
-            Path filePath = Paths.get(fileDir + "\\" + file.getUuid() + file.getExt());
+            Path filePath = Paths.get(fileDir  + file.getUuid() + file.getExt());
 
             InputStreamResource resource = new InputStreamResource(new FileInputStream(filePath.toString()));
             String fileName = file.getOrigFilename();
