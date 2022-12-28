@@ -1,11 +1,11 @@
 -- 테스트 계정
 -- TODO: 테스트용이지만 비밀번호가 노출된 데이터 세팅. 개선하는 것이 좋을 지 고민해 보자.
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by, admincheck) values
-('admin', '{noop}1234qwer', 'admin', 'admin@mail.com', 'I am admin.', now(), 'admin', now(), 'admin', 1),
+('admin', '{noop}rhksflwk1234qwer', 'admin', 'admin@mail.com', 'I am admin.', now(), 'admin', now(), 'admin', 1),
 ('유저1', '{noop}1234qwer', '유저1', '유저1@mail.com', 'I am 유저1.', now(), '유저1', now(), '유저1', 0),
-('유저2', '{noop}1234qwer', '유저2', '유저2@mail.com', 'I am 유저2.', now(), '유저2', now(), '유저2', 0),
-('유저3', '{noop}1234qwer', '유저3', '유저3@mail.com', 'I am 유저3.', now(), '유저3', now(), '유저3', 0),
-('유저4', '{noop}1234qwer', '유저4', '유저4@mail.com', 'I am 유저4.', now(), '유저4', now(), '유저4', 0)
+('유저2', '{noop}dbwj1234qwer', '유저2', '유저2@mail.com', 'I am 유저2.', now(), '유저2', now(), '유저2', 0),
+('유저3', '{noop}dbwj1234qwer', '유저3', '유저3@mail.com', 'I am 유저3.', now(), '유저3', now(), '유저3', 0),
+('유저4', '{noop}dbwj1234qwer', '유저4', '유저4@mail.com', 'I am 유저4.', now(), '유저4', now(), '유저4', 0)
 ;
 
 
@@ -383,7 +383,8 @@ Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
 
 Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', null, 'Wilmer', 'Ingra', '2021-07-19 14:18:17', '2022-01-23 17:29:54'),
                                                                                                              ('admin', '안녕하세요 관리자입니다.', '제 계정을 탈취해주세요. 관리자페이지는 /admin입니다.', '#purple', 'admin', 'Thalia', '2022-12-25 08:32:22', '2021-04-02 02:58:19'),
-                                                                                                             ('admin', '첨부파일기능이 추가됐습니다! 글쓰기에서 확인하세요!', '감사합니다.', '#purple', 'admin', 'Thalia', '2022-12-25 08:32:22', '2021-04-02 02:58:19')
+                                                                                                             ('admin', '첨부파일기능이 추가됐습니다! 글쓰기에서 확인하세요!', '감사합니다.', '#purple', 'admin', 'Thalia', '2022-12-25 08:32:22', '2021-04-02 02:58:19'),
+                                                                                                             ('admin', '회원가입이 귀찮다면? [ID : 유저1, PW : 1234qwer] 을 이용하세요', '감사합니다.', '#purple', 'admin', 'Thalia', '2022-12-25 08:32:22', '2021-04-02 02:58:19')
 
 ;
 
