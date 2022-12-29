@@ -39,6 +39,13 @@ public class UserAccount extends AuditingFields {
         this.modifiedBy = createdBy;
     }
 
+    public void updateUserAccount(String userPassword, String email, String nickname, String memo){
+        this.userPassword = userPassword;
+        this.email = email;
+        this.nickname = nickname;
+        this.memo = memo;
+    }
+
     public static UserAccount of(String userId, String userPassword, String email, String nickname, String memo) {
         return new UserAccount(userId, userPassword, email, nickname, memo, 0, null);
     }

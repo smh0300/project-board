@@ -67,6 +67,7 @@ public record BoardPrincipal(
     @Override public boolean isCredentialsNonExpired() { return true; }
     @Override public boolean isEnabled() { return true; }
 
+
     public enum RoleType {
         USER("ROLE_USER"),
         ADMIN("ROLE_ADMIN"),
