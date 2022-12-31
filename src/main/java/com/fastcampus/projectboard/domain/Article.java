@@ -31,11 +31,17 @@ public class Article extends AuditingFields {
 
     @Setter private String hashtag; // 해시태그
 
+
     @ToString.Exclude
     @OrderBy("createdAt DESC")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
+    //자식이 남아있으면 참조오류로 삭제가 안되기 때문에 추가함
+    @ToString.Exclude
+    @OrderBy("createdAt DESC")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private final Set<File> files = new LinkedHashSet<>();
 
     protected Article() {}
 

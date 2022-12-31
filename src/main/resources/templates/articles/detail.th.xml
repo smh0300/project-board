@@ -4,12 +4,22 @@
     <attr sel="#footer" th:replace="~{footer :: footer}" />
 
     <attr sel="#article-main" th:object="${article}">
+        <!-- 본문 우측 메타데이터 나열 -->
         <attr sel="#article-header/h1" th:text="*{title}" />
         <attr sel="#nickname" th:text="*{nickname}" />
         <attr sel="#email" th:text="*{email}" />
         <attr sel="#created-at" th:datetime="*{createdAt}" th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}" />
         <attr sel="#hashtag" th:text="*{hashtag}" />
+        <!-- 본문 -->
         <attr sel="#article-content/pre" th:text="*{content}" />
+        <!-- 첨부파일 나열-->
+        <attr sel="#comment-files" th:remove="all-but-first">
+            <attr sel="li[0]" th:each="articleFiles : ${articleFiles}">
+                <attr sel="#filename" th:text="${articleFiles.origFilename}" th:href="'/articles/download/'+${articleId}+'/'+${articleFiles.uuid}" />
+                <attr sel="#filesize" th:text="${articleFiles.fileSize} + ' Byte'"/>
+            </attr>
+        </attr>
+
 
         <attr sel="#article-buttons" th:if="${#authorization.expression('isAuthenticated()')} and *{userId} == ${#authentication.name}">
             <attr sel="#delete-article-form" th:action="'/articles/' + *{id} + '/delete'" th:method="post">
@@ -23,6 +33,7 @@
             <attr sel="#comment-submit" sec:authorize="isAuthenticated()" />
         </attr>
         sec:authorize="isAuthenticated()"
+        <!-- 댓글 나열 -->
         <attr sel="#article-comments" th:remove="all-but-first">
             <attr sel="li[0]" th:each="articleComment : ${articleComments}">
                 <attr sel="form" th:action="'/comments/' + ${articleComment.id} + '/delete'" th:method="post">

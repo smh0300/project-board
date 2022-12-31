@@ -11,22 +11,22 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QArticle is a Querydsl query type for Article
+ * QFile is a Querydsl query type for File
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QArticle extends EntityPathBase<Article> {
+public class QFile extends EntityPathBase<File> {
 
-    private static final long serialVersionUID = -498531289L;
+    private static final long serialVersionUID = 1461285867L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QArticle article = new QArticle("article");
+    public static final QFile file = new QFile("file");
 
     public final QAuditingFields _super = new QAuditingFields(this);
 
-    public final SetPath<ArticleComment, QArticleComment> articleComments = this.<ArticleComment, QArticleComment>createSet("articleComments", ArticleComment.class, QArticleComment.class, PathInits.DIRECT2);
+    public final QArticle article;
 
-    public final StringPath content = createString("content");
+    public final StringPath contentType = createString("contentType");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
@@ -34,9 +34,9 @@ public class QArticle extends EntityPathBase<Article> {
     //inherited
     public final StringPath createdBy = _super.createdBy;
 
-    public final SetPath<File, QFile> files = this.<File, QFile>createSet("files", File.class, QFile.class, PathInits.DIRECT2);
+    public final StringPath ext = createString("ext");
 
-    public final StringPath hashtag = createString("hashtag");
+    public final NumberPath<Long> fileSize = createNumber("fileSize", Long.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -46,28 +46,31 @@ public class QArticle extends EntityPathBase<Article> {
     //inherited
     public final StringPath modifiedBy = _super.modifiedBy;
 
-    public final StringPath title = createString("title");
+    public final StringPath origFilename = createString("origFilename");
 
     public final QUserAccount userAccount;
 
-    public QArticle(String variable) {
-        this(Article.class, forVariable(variable), INITS);
+    public final StringPath uuid = createString("uuid");
+
+    public QFile(String variable) {
+        this(File.class, forVariable(variable), INITS);
     }
 
-    public QArticle(Path<? extends Article> path) {
+    public QFile(Path<? extends File> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QArticle(PathMetadata metadata) {
+    public QFile(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QArticle(PathMetadata metadata, PathInits inits) {
-        this(Article.class, metadata, inits);
+    public QFile(PathMetadata metadata, PathInits inits) {
+        this(File.class, metadata, inits);
     }
 
-    public QArticle(Class<? extends Article> type, PathMetadata metadata, PathInits inits) {
+    public QFile(Class<? extends File> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.article = inits.isInitialized("article") ? new QArticle(forProperty("article"), inits.get("article")) : null;
         this.userAccount = inits.isInitialized("userAccount") ? new QUserAccount(forProperty("userAccount")) : null;
     }
 

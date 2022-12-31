@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,7 @@
     <section class="col-md-3 col-lg-4 order-md-last">
       <aside>
         <p><span id="nickname">Uno</span></p>
-        <p><a id="email" href="mailto:djkehh@gmail.com">uno@mail.com</a></p>
+        <p><a id="email" >uno@mail.com</a></p>
         <p><time id="created-at" datetime="2022-01-01T00:00:00">2022-01-01</time></p>
         <p><span id="hashtag">#java</span></p>
       </aside>
@@ -36,6 +36,22 @@
     <article id="article-content" class="col-md-9 col-lg-8">
       <pre>본문</pre>
     </article>
+  </div>
+
+  <div>
+    첨부파일
+   <ul id="comment-files" class="row col-md-10 col-lg-8 pt-3">
+    <li>
+        <input type="hidden" class="article-id">
+        <div class="row">
+          <div class="col-md-10 col-lg-9">
+            <a id="filename">Uno</a>
+            <label id="filesize">1.4MB</label>
+
+          </div>
+        </div>
+    </li>
+   </ul>
   </div>
 
   <div class="row g-5" id="article-buttons">
