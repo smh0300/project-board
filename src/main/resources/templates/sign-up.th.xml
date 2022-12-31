@@ -3,6 +3,18 @@
 
     <attr sel="#footer" th:replace="~{footer :: footer}" />
 
-    <attr sel="#sign-up-form" th:action="@{/sign-up}" th:method="post"/>
+    <attr sel="#userSignUp"  th:method="post"  th:action="@{/sign-up}" >
+
+        <attr sel="#userid" th:value="${userSignUpRequest?.userId}" />
+        <attr sel="#nickname" th:value="${userSignUpRequest?.nickname}" />
+        <attr sel="#email" th:value="${userSignUpRequest?.email}" />
+        <attr sel="#memo" th:value="${userSignUpRequest?.memo}" />
+
+        <attr sel="#verifyUserId" th:if="${userId}" th:text="${userId}"/>
+        <attr sel="#verifyUserPw" th:if="${userPassword}" th:text="${userPassword}"/>
+        <attr sel="#verifyNickname" th:if="${nickname}" th:text="${nickname}"/>
+        <attr sel="#verifyEmail" th:if="${email}" th:text="${email}"/>
+
+    </attr>
 
 </thlogic>

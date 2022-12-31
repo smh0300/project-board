@@ -4,10 +4,12 @@ import com.fastcampus.projectboard.domain.UserAccount;
 import com.fastcampus.projectboard.dto.UserAccountDto;
 import com.fastcampus.projectboard.dto.request.UserSignUpRequest;
 import com.fastcampus.projectboard.repository.UserAccountRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Errors;
 
 import java.util.Optional;
 
@@ -19,9 +21,8 @@ public class UserSignUpService {
 
     private final PasswordEncoder passwordEncoder;
 
-
     @Transactional
-    public void createUser( UserSignUpRequest dto) {
+    public String createUser(UserSignUpRequest dto) {
 
         String encrypted_password = passwordEncoder.encode(dto.userPassword());
         UserSignUpRequest userSignUpRequest = UserSignUpRequest.builder()
@@ -35,6 +36,7 @@ public class UserSignUpService {
 
         userAccountRepository.save(userSignUpRequest.toEntity());
 
+        return null;
     }
 
     @Transactional(readOnly = true)

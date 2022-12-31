@@ -7,6 +7,6 @@
     <attr sel="#loginerror" th:if="@{param.error}" />
     <attr sel="#loginerrortxt" th:text="${exception}" />
 
-
+    <attr sel="#signUpSuccess" th:if="${success}" th:text="${success}"/>
 
 </thlogic>

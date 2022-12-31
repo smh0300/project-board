@@ -104,25 +104,25 @@
     </div>
 
     <div class="pb-2 mb-3 ml-7">
-      <strong>변경할 항목만 기입하시면 됩니다.</strong>
+      <strong>변경하고싶은 항목만 기입하시면 됩니다.</strong>
 
       <form id="changeuser">
 
-      아이디 : <span id="user_id"></span><br>
+      ID : <span id="user_id"></span><br>
       별명 : <span id="user_nickname"></span>
-      <input type="text" class="form-control" name="change_nickname">
+      <input type="text" class="form-control" placeholder="변경할 별명 기입" name="change_nickname">
       이메일 : <span id="user_email"></span>
-      <input type="text" class="form-control" name="change_email">
+      <input type="text" class="form-control"placeholder="변경할 이메일 기입" name="change_email">
       메모 : <span id="user_memo"></span>
-      <input type="text" class="form-control" name="change_memo">
+      <input type="text" class="form-control"placeholder="변경할 메모 기입" name="change_memo">
       변경할 비밀번호 : <span id="user_pw"></span>
-      <input type="text" class="form-control" name="change_password">
-      변경할 비밀번호 재확인 : <span id="user_pw"></span>
-      <input type="text" class="form-control" name="change_password_verify">
+      <input type="password" class="form-control" placeholder="변경할 비밀번호 기입" name="change_password">
+      변경할 비밀번호 재확인 : <span id="user_pw_verify"></span>
+      <input type="password" class="form-control" placeholder="변경할 비밀번호 재기입" name="change_password_verify">
       <br>
       <hr>
       현재 비밀번호 :
-      <input type="text" class="form-control" name="current_password" required>
+      <input type="password" class="form-control" name="current_password" placeholder="필수 입력" required>
       <button type="submit" class="btn btn-secondary" >변경하기</button>
       </form>
     </div>
