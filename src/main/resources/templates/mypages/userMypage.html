@@ -109,21 +109,33 @@
       <form id="changeuser">
 
       ID : <span id="user_id"></span><br>
-      별명 : <span id="user_nickname"></span>
+
+      닉네임 : <span id="user_nickname"></span>
       <input type="text" class="form-control" placeholder="변경할 별명 기입" name="change_nickname">
+      <div class="alert-warning" id="validNickname" style="color:red" >이메일이 개판이시네요</div>
+
       이메일 : <span id="user_email"></span>
       <input type="text" class="form-control"placeholder="변경할 이메일 기입" name="change_email">
+        <div class="alert-danger" id="validEmail" style="color:red">이메일이 개판이시네요</div>
+
       메모 : <span id="user_memo"></span>
       <input type="text" class="form-control"placeholder="변경할 메모 기입" name="change_memo">
+
       변경할 비밀번호 : <span id="user_pw"></span>
       <input type="password" class="form-control" placeholder="변경할 비밀번호 기입" name="change_password">
-      변경할 비밀번호 재확인 : <span id="user_pw_verify"></span>
+        <div class="alert-danger" id="validPassword" style="color:red">이메일이 개판이시네요</div>
+
+      변경할 비밀번호 확인 : <span id="user_pw_verify"></span>
       <input type="password" class="form-control" placeholder="변경할 비밀번호 재기입" name="change_password_verify">
+        <div class="alert-danger" id="validBothPassword" style="color:red">이메일이 개판이시네요</div>
       <br>
       <hr>
       현재 비밀번호 :
       <input type="password" class="form-control" name="current_password" placeholder="필수 입력" required>
+        <div class="alert-danger" id="validCurrentPassword" style="color:red">이메일이 개판이시네요</div>
+
       <button type="submit" class="btn btn-secondary" >변경하기</button>
+        <div class="alert-danger" id="success" style="color:green">이메일이 개판이시네요</div>
       </form>
     </div>
 

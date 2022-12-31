@@ -1,6 +1,7 @@
 package com.fastcampus.projectboard.controller;
 
 import com.fastcampus.projectboard.dto.request.UserSignUpRequest;
+import com.fastcampus.projectboard.service.MypageService;
 import com.fastcampus.projectboard.service.UserSignUpService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,7 @@ public class UserSignUpController {
             ModelMap map,
             RedirectAttributes rdmap
     ) {
+
         if(bindingResult.hasErrors()){
 
             Map<String, String> validatorResult = new HashMap<>();

@@ -8,4 +8,12 @@
     <attr sel="#user_nickname" th:text="${CurrentUser.nickname}" />
     <attr sel="#user_email" th:text="${CurrentUser.email}" />
     <attr sel="#user_memo" th:text="${CurrentUser.memo}" />
+
+    <attr sel="#validNickname" th:if="${validNickname}" th:text="${validNickname}"/>
+    <attr sel="#validEmail" th:if="${validEmail}" th:text="${validEmail}"/>
+    <attr sel="#validPassword" th:if="${validPassword}" th:text="${validPassword}"/>
+    <attr sel="#validBothPassword" th:if="${validBothPassword}" th:text="${validBothPassword}"/>
+    <attr sel="#validCurrentPassword" th:if="${validCurrentPassword}" th:text="${validCurrentPassword}"/>
+    <attr sel="#success" th:if="${success}" th:text="${success}"/>
+
 </thlogic>

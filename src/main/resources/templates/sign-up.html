@@ -19,11 +19,11 @@
   <div class="input-form-backgroud row">
     <div class="input-form col-md-12 mx-auto">
       <h4 class="mb-3">회원가입</h4>필수입력 *<br>
-      <form class="validation-form" id="userSignUp" modelattribute="userSignUp" name="userSignUp" novalidate>
+      <form class="validation-form" id="userSignUp" name="userSignUp" novalidate>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="userid">ID *</label>
-            <input type="text" class="form-control" id="userid" name="userId" placeholder="최소 5자 이상" value="" required>
+            <input type="text" class="form-control" id="userid" name="userId" placeholder="최소 5자 이상" value="" >
             <div class="invalid-feedback">
               아이디가 비어있습니다.
             </div>
@@ -31,10 +31,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="password">비밀번호 *</label>
-            <input type="password" class="form-control" id="password" name="userPassword" placeholder="최소 8자 이상 (영문자, 숫자 포함)" value="" required>
-            <div id="password_min_length" style="font-size:14px; color:#DC3545;">
-              비밀번호는 최소 8자 이상이어야합니다.
-            </div>
+            <input type="password" class="form-control" id="password" name="userPassword" placeholder="최소 8자 이상 (영문자, 숫자 포함)" value="" >
             <div class="invalid-feedback" id="invalidPw">
               비밀번호가 비어있습니다.
             </div>
@@ -44,7 +41,7 @@
 
         <div class="mb-3">
           <label for="nickname">별명 *</label>
-          <input type="text" class="form-control" name="nickname" id="nickname" value="" required>
+          <input type="text" class="form-control" name="nickname" id="nickname" value="" placeholder="최소 5자 이상">
           <div class="invalid-feedback" id="invalidNickname">
             별명이 비어있습니다.
           </div>
@@ -53,7 +50,7 @@
 
         <div class="mb-3">
           <label for="email">이메일 *</label>
-          <input type="email" class="form-control" name="email" id="email" value="" required>
+          <input type="email" class="form-control" name="email" id="email" value="" placeholder="ex) hello@world.com">
           <div class="invalid-feedback" id="invalidEmail">
             이메일이 비어있습니다.
           </div>
@@ -68,12 +65,12 @@
 
         <hr class="mb-4">
         ※ 본 사이트는 공부용이며 신청에 사용된 모든 정보의 안전성을 보장하지 않습니다.
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="aggrement" required>
-          <label class="custom-control-label" for="aggrement">위 주의사항을 인지했습니다.</label>
-        </div>
+<!--        <div class="custom-control custom-checkbox">-->
+<!--          <input type="checkbox" class="custom-control-input" id="aggrement" required>-->
+<!--          <label class="custom-control-label" for="aggrement">위 주의사항을 인지했습니다.</label>-->
+<!--        </div>-->
         <div class="mb-4"></div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="pw_check();" >가입 신청</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" >가입 신청</button>
       </form>
     </div>
   </div>
@@ -84,30 +81,23 @@
   </footer>
 
 </div>
-<script>
-  document.getElementById("password_min_length").style.display="None";
+<!--<script>-->
+<!--  window.addEventListener('load', () => {-->
+<!--    const forms = document.getElementsByClassName('validation-form');-->
 
-  window.addEventListener('load', () => {
-    const forms = document.getElementsByClassName('validation-form');
+<!--    Array.prototype.filter.call(forms, (form) => {-->
+<!--      form.addEventListener('submit', function (event) {-->
+<!--        if (form.checkValidity() === false) {-->
+<!--          event.preventDefault();-->
+<!--          event.stopPropagation();-->
+<!--        }-->
+<!--        form.classList.add('was-validated');-->
+<!--      }, false);-->
+<!--    });-->
+<!--  }, false);-->
 
-    Array.prototype.filter.call(forms, (form) => {
-      form.addEventListener('submit', function (event) {
-        if (form.checkValidity() === false || pw_check() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-          if (pw_check() === false){ document.getElementById("password_min_length").style.display=""; }
-          else { document.getElementById("password_min_length").style.display="None" }
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
 
-  function pw_check() {
-    const pw = document.getElementById("password").value;
-    return pw.length >= 8;
-  }
-</script>
+<!--</script>-->
 </body>
 
 </html>

@@ -12,6 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiredArgsConstructor
 @Service
 public class MypageService {
@@ -19,24 +22,48 @@ public class MypageService {
     private final UserAccountRepository userAccountRepository;
 
     @Transactional
-    public void changeuserinfo(String changeNickname,
-                               String changeEmail,
-                               String changeMemo,
-                               String changePassword,
-                               @AuthenticationPrincipal BoardPrincipal boardprincipal
+    public BoardPrincipal changeuserinfo(String changeNickname,
+                                              String changeEmail,
+                                              String changeMemo,
+                                              String changePassword,
+                                              @AuthenticationPrincipal BoardPrincipal boardprincipal
     ) throws Exception {
-        if (changeNickname.equals("")){
-            changeNickname = boardprincipal.nickname();
-        }
-        if (changeEmail.equals("")){
-            changeEmail = boardprincipal.email();
-        }
-        if (changeMemo.equals("")){
-            changeMemo = boardprincipal.memo();
-        }
-        if (changePassword.equals("")){
-            changePassword = boardprincipal.password();
-        }
+//        if (changeNickname.equals("")){
+//            changeNickname = boardprincipal.nickname();
+//        }
+//        if (changeEmail.equals("")){
+//            changeEmail = boardprincipal.email();
+//        }
+//        if (changeMemo.equals("")){
+//            changeMemo = boardprincipal.memo();
+//        }
+//        if (changePassword.equals("")){
+//            changePassword = boardprincipal.password();
+//        }
+//
+//        //여기서 Validate
+//        Map<String, String> validatorResult = new HashMap<>();
+//        String emailCheck = "^(?:\\w+\\.?)*\\w+@(?:\\w+\\.)+\\w+$";
+//        String passwordCheck = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+//        Integer invalidCount = 0;
+//
+//        if (changeNickname.length()<5) {
+//            validatorResult.put("validNickname", "닉네임 형식에 맞지 않습니다.(최소 3글자 이상)");
+//            invalidCount++;
+//        }
+//        if (!changeEmail.matches(emailCheck)){
+//            validatorResult.put("validEmail", "이메일 형식에 맞지 않습니다 (ex : hello@world.com)");
+//            invalidCount++;
+//        }
+//        if (!changePassword.matches(passwordCheck)){
+//            validatorResult.put("validPassword", "비밀번호 형식에 맞지 않습니다 (최소 8자 이상, 영문자, 숫자 포함)");
+//            invalidCount++;
+//        }
+//
+//        if (invalidCount != 0){
+//            return validatorResult;
+//        }
+
 
         //DB수정
         UserAccount userAccount = userAccountRepository.findById(boardprincipal.getUsername()).orElseThrow();
@@ -51,6 +78,7 @@ public class MypageService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(BoardPrincipal.from(userAccountDto),null,boardprincipal.authorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        return  BoardPrincipal.from(userAccountDto);
     }
 
 }
